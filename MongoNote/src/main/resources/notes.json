@@ -1,0 +1,2 @@
+{"user_id":{"$oid":"593864a9bb060c600b023821"},"titre":"Note 1","date_ajout":ISODate("2017-06-07T20:00:00.000+02:00"),"contenu":"truc\nmachin chose","hashtags":["#test"],"archive":false}
+{"user_id":{"$oid":"593864a9bb060c600b023821"},"titre":"Note 2 supprimée","date_ajout":ISODate("2017-06-07T20:00:00.000+02:00"),"contenu":"truc\nmachin chose","hashtags":["#test","#suppr"],"archive":true}
