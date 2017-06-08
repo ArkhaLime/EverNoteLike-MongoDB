@@ -41,12 +41,20 @@ public class MongoConnection {
 		return client;
 	}
 	
-	public static MongoCollection<User> getUsersCollection(){
-		return getConnection().getDatabase(databaseName).getCollection(usersCollName,User.class);
+	public static void startConnection(){
+		getConnection();
+	}
+	
+	public static MongoCollection<Document> getUsersCollection(){
+		return getConnection().getDatabase(databaseName).getCollection(usersCollName);
 	}
 	
 	public static MongoCollection<Document> getNotesCollection(){
 		return getConnection().getDatabase(databaseName).getCollection(notesCollName);
+	}
+	
+	public static void close(){
+		if(client!=null) client.close();
 	}
 	
 }
