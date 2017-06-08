@@ -25,7 +25,12 @@ public class App
             User testCreation = new User("test@test.fr","testCreation","test");
             testCreation.setId(new ObjectId());
             System.out.println(testCreation);
-            dao.createUser(testCreation);
+            try {
+				dao.createUser(testCreation);
+			} catch (Exception ex) {
+				System.out.println("Peut être normal si l'utilisateur est dèja créé\n");
+				ex.printStackTrace();
+			}
             User testCreation2 = dao.login("test@test.fr", "test");
             System.out.println(testCreation2);
 		} finally {
