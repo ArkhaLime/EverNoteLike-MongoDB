@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.bson.BsonObjectId;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -19,53 +20,66 @@ public class Note extends Document {
 	public static final String archive="archive";
 	
 	public Note() {
-		// TODO Auto-generated constructor stub
+		setDateAjout(new Date());
 	}
 
 	public Note(Map<String, Object> map) {
 		super(map);
-		// TODO Auto-generated constructor stub
+		if(!containsKey(dateAjout)) setDateAjout(new Date());
 	}
 
 	public Note(String key, Object value) {
 		super(key, value);
-		// TODO Auto-generated constructor stub
+		if(!containsKey(dateAjout)) setDateAjout(new Date());
 	}
 	
 	public ObjectId getId(){
 		return getObjectId(id);
 	}
 	
+	public Note setId(ObjectId newId){
+		put(id, newId);
+		return this;
+	}
+	
+	public Note setId(BsonObjectId newId){
+		return setId(newId.getValue());
+	}
+	
 	public ObjectId getUserId(){
 		return getObjectId(userId);
 	}
 	
-	public void setUserId(ObjectId newId){
+	public Note setUserId(ObjectId newId){
 		put(userId, newId);
+		return this;
 	}
 	
 	public String getTitre(){
 		return getString(titre);
 	}
 	
-	public void setTitre(String newTitre){
+	public Note setTitre(String newTitre){
 		put(titre, newTitre);
+		return this;
 	}
 	
 	public Date getDateAjout(){
 		return getDate(dateAjout);
 	}
 	
-//	public void setDateAjout(Date newDateAjout){
-//		put(dateAjout, newDateAjout);
-//	}
+	private Note setDateAjout(Date newDateAjout){
+		put(dateAjout, newDateAjout);
+		return this;
+	}
 
 	public String getContenu(){
 		return getString(contenu);
 	}
 	
-	public void setContenu(String newContenu){
+	public Note setContenu(String newContenu){
 		put(contenu, newContenu);
+		return this;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -73,15 +87,22 @@ public class Note extends Document {
 		return (List<String>)get(hashtags);
 	}
 	
-	public void setHashtags(List<String> newHashtags){
+	public Note setHashtags(List<String> newHashtags){
 		put(hashtags, newHashtags);
+		return this;
 	}
 
 	public boolean isArchive(){
 		return getBoolean(archive,false);
 	}
 	
-	public void setArchive(boolean isArchive){
+	public Note setArchive(boolean isArchive){
 		put(archive, isArchive);
+		return this;
+	}
+	
+	@Override
+	public String toString() {
+		return "Note{"+super.toString()+"}";
 	}
 }
