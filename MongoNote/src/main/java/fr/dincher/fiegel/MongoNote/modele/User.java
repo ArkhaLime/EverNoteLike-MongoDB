@@ -75,6 +75,15 @@ public class User extends Document {
 		return this;
 	}
 	
+	public Document toDocument(){
+		return new Document(this);
+	}
+	
+	public static User fromDocument(Document doc){
+		if(doc!=null) return new User(doc);
+		return null;
+	}
+	
 	@Override
 	public String toString() {
 		return "User{"+super.toString()+"}";
