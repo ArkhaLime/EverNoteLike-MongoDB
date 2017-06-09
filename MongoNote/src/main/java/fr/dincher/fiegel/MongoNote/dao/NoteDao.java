@@ -75,7 +75,7 @@ public class NoteDao {
 		if(dateDebut.compareTo(dateFin)>0){
 			Date temp=dateFin;
 			dateFin=dateDebut;
-			dateDebut=dateFin;
+			dateDebut=temp;
 		}
 		MongoIterable<Note> notez = notes.find(and(eq(Note.userId, user.getId()), gte(Note.dateAjout,dateDebut),lte(Note.dateAjout,dateFin))).map(mapper);
 		ArrayList<Note> res = notez.into(new ArrayList<Note>());
