@@ -1,5 +1,6 @@
 package fr.dincher.fiegel.MongoNote.modele;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,24 @@ public class Note extends Document {
 	public Note(String key, Object value) {
 		super(key, value);
 		if(!containsKey(dateAjout)) setDateAjout(new Date());
+	}
+	
+	public Note(User user, String titre, String contenu){
+		setUserId(user.getId());
+		setTitre(titre);
+		setContenu(contenu);
+		setDateAjout(new Date());
+		setHashtags(new ArrayList<String>());
+		setArchive(false);
+	}
+	
+	public Note(User user, String titre, String contenu,List<String> hashtags){
+		setUserId(user.getId());
+		setTitre(titre);
+		setContenu(contenu);
+		setDateAjout(new Date());
+		setHashtags(hashtags);
+		setArchive(false);
 	}
 	
 	public ObjectId getId(){
@@ -99,6 +118,15 @@ public class Note extends Document {
 	public Note setArchive(boolean isArchive){
 		put(archive, isArchive);
 		return this;
+	}
+	
+	public Document toDocument(){
+		return new Document(this);
+	}
+	
+	public static Note fromDocument(Document doc){
+		if(doc!=null) return new Note(doc);
+		return null;
 	}
 	
 	@Override
