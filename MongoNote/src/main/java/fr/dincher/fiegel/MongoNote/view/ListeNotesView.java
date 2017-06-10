@@ -12,6 +12,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import fr.dincher.fiegel.MongoNote.controller.ClosingController;
 import fr.dincher.fiegel.MongoNote.controller.RechercheController;
 import fr.dincher.fiegel.MongoNote.controller.SwitchViewController;
 import fr.dincher.fiegel.MongoNote.modele.Note;
@@ -74,6 +75,7 @@ public class ListeNotesView {
 		splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, splitPane, bottomPanel);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addWindowListener(new ClosingController());
 		frame.add(splitPane);
 		frame.pack();
 		frame.setLocationRelativeTo(null);

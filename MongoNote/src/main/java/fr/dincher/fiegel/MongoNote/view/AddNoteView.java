@@ -13,6 +13,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 
 import fr.dincher.fiegel.MongoNote.controller.AddNoteController;
+import fr.dincher.fiegel.MongoNote.controller.ClosingController;
 import fr.dincher.fiegel.MongoNote.controller.RetourController;
 import fr.dincher.fiegel.MongoNote.modele.User;
 
@@ -69,7 +70,8 @@ public class AddNoteView {
 		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, ctrlPane, panelButton);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		frame.addWindowListener(new ClosingController());
+		
 		frame.getContentPane().add(splitPane);
 		frame.pack();
 		frame.setLocationRelativeTo(null);

@@ -5,10 +5,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.dincher.fiegel.MongoNote.controller.ClosingController;
 import fr.dincher.fiegel.MongoNote.controller.ConnexionController;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class ConnexionView {
 
@@ -55,6 +58,27 @@ public class ConnexionView {
 		panel_2.add(signinButton);
 		signinButton.setActionCommand("signin");
 		signinButton.addActionListener(connexionController);
+
+		mdpField.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {}
+
+			@Override
+			public void keyReleased(KeyEvent e) {}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				int touche = e.getExtendedKeyCode();
+				if (touche == KeyEvent.VK_ENTER) {
+					signinButton.doClick();
+					e.consume();
+				}
+			}
+		});
+		
+		frame.addWindowListener(new ClosingController());
+		
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
