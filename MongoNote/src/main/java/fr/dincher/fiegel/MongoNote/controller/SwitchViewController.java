@@ -39,7 +39,17 @@ public class SwitchViewController implements ActionListener {
 			} else if (e.getActionCommand().equals("ToUpdate")) {
 
 				NoteDao dao = new NoteDao();
-				Note note = dao.selectNoteById((ObjectId) table.getModel().getValueAt(table.getSelectedRow(), 0));
+				Object idNote = null;
+				try {
+					idNote = table.getModel().getValueAt(table.getSelectedRow(), 0);
+				} catch (Exception ex) {
+					//ex.printStackTrace();
+				}
+				if (idNote == null) {
+					JOptionPane.showMessageDialog(frame, "Veuillez sélectionner une ligne");
+					return;
+				}
+				Note note = dao.selectNoteById((ObjectId) idNote);
 				if (note != null) {
 					frame.setVisible(false);
 					new UpdateNoteView(note, user);
@@ -47,7 +57,7 @@ public class SwitchViewController implements ActionListener {
 
 			}
 		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(frame, "Un porbl�me est survenue veuillez relancer le programme");
+			JOptionPane.showMessageDialog(frame, "Un problème est survenue! Veuillez relancer le programme");
 			e1.printStackTrace();
 		}
 

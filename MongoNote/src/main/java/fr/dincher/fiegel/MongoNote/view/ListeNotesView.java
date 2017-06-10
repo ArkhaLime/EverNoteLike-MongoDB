@@ -24,13 +24,12 @@ public class ListeNotesView {
 		JTextField rechercheField = new JTextField(20);
 		JButton rechercheButton = new JButton("Rechercher");
 
-
 		JButton choixButton = new JButton("Choisir une note");
 		JButton ajouterButton = new JButton("Ajouter une note");
 		// JComboBox tempsComboBox = new JComboBox(TempsListes);
 		JFrame frame = new JFrame("Liste des notes");
 		JTable table = new JTable();
-		String[] columnNames = { "", "Titre","contenu","hashtag"};
+		String[] columnNames = { "id", "Titre", "contenu", "hashtag" };
 
 		// Init du controller
 		SwitchViewController mainViewController = new SwitchViewController(table, frame, user);
@@ -56,6 +55,7 @@ public class ListeNotesView {
 			o[3] = note.getHashtags().toString();
 			model.addRow(o);
 		}
+		table.removeColumn(table.getColumn("id"));
 
 		JScrollPane tableScrollPane = new JScrollPane(table);
 		tableScrollPane.setPreferredSize(new Dimension(700, 182));
@@ -66,11 +66,11 @@ public class ListeNotesView {
 		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, ctrlPane, panel2);
 		splitPane.setDividerLocation(35);
 		splitPane.setEnabled(false);
-		
+
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.add(choixButton);
 		bottomPanel.add(ajouterButton);
-		
+
 		splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, splitPane, bottomPanel);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -26,7 +26,7 @@ public class AddNoteView {
 		// Create views swing UI components
 		JLabel titleLabel = new JLabel("Titre                             ");
 		JLabel contenuLabel = new JLabel("Contenu                  ");
-		JLabel hashtagLabel = new JLabel("Hashtag            ");
+		JLabel hashtagLabel = new JLabel("Hashtag (séparé par des espaces)           ");
 		JTextField titleField = new JTextField(26);
 //		titleField.setText(note.getTitre());
 		JTextField contenuField = new JTextField(26);
@@ -37,6 +37,7 @@ public class AddNoteView {
 		JButton switchViewButton = new JButton("Retour");
 		switchViewButton.setMaximumSize(new Dimension(80, 60));
 		JFrame frame = new JFrame("Nouvelle Note");
+		frame.setResizable(false);
 
 		// Create controllers
 		AddNoteController AddNoteController = new AddNoteController(titleField, contenuField, hashtagField, user, frame);
@@ -69,7 +70,7 @@ public class AddNoteView {
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		frame.add(splitPane);
+		frame.getContentPane().add(splitPane);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setMaximumSize(dimension);
