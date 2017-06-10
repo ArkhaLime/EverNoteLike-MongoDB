@@ -41,6 +41,7 @@ public class MongoConnection {
 	}
 
 	public static void startConnection() {
+		System.err.println("INFO - Création de la connexion");
 		getConnection();
 	}
 
@@ -52,9 +53,12 @@ public class MongoConnection {
 		return getConnection().getDatabase(databaseName).getCollection(notesCollName);
 	}
 
-	public static void close() {
-		if (client != null)
+	public static void closeConnection() {
+		if (client != null){
+			System.err.println("INFO - Fermeture de la connexion");
 			client.close();
+			client=null;
+		}
 	}
 
 }

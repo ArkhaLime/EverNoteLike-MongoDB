@@ -1,9 +1,15 @@
 package fr.dincher.fiegel.MongoNote;
 
+import fr.dincher.fiegel.MongoNote.dao.MongoConnection;
 import fr.dincher.fiegel.MongoNote.view.ConnexionView;
 
 public class Main {
 	public static void main(String[] args) {
-		new ConnexionView();
+		MongoConnection.startConnection();
+		System.out.println("Connexion lancée");
+		ConnexionView vue = new ConnexionView();
+		System.out.println("Fenètre lancée");
+		// MongoConnection.closeConnection();
+		// System.out.println("Connexion fermé");
 	}
 }

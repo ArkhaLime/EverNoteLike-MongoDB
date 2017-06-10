@@ -68,7 +68,7 @@ public class App
             notesAllTexte.stream().forEach(afficherNote);
             
 		} finally {
-			MongoConnection.close();
+			MongoConnection.closeConnection();
 		}
         
         
