@@ -13,7 +13,7 @@ import fr.dincher.fiegel.MongoNote.utils.ConfigLoader;
 public class MongoConnection {
 
 	// valeurs par défauts
-	private static final String coString = "mongodb://localhost:27017/";
+	private static final String coString = "mongodb://mongonote:mongonote@mongonote-shard-00-00-oolzt.mongodb.net:27017,mongonote-shard-00-01-oolzt.mongodb.net:27017,mongonote-shard-00-02-oolzt.mongodb.net:27017/mongonote?ssl=true&replicaSet=mongonote-shard-0&authSource=admin";
 	private static final String collUsers = "users";
 	private static final String collNotes = "notes";
 	private static final String dbName = "mongonote";

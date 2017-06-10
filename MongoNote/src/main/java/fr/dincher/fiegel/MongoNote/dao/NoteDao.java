@@ -3,13 +3,16 @@ package fr.dincher.fiegel.MongoNote.dao;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.elemMatch;
 import static com.mongodb.client.model.Filters.eq;
-import static com.mongodb.client.model.Filters.*;
+import static com.mongodb.client.model.Filters.gte;
+import static com.mongodb.client.model.Filters.lte;
+import static com.mongodb.client.model.Filters.regex;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import com.mongodb.Function;
 import com.mongodb.client.MongoCollection;
@@ -34,6 +37,16 @@ public class NoteDao {
 		notes = MongoConnection.getNotesCollection();
 	}
 
+	public Note selectNoteById(String id) {
+		return selectNoteById(new ObjectId(id));
+	}
+	
+	public Note selectNoteById(ObjectId id) {
+		MongoIterable<Note> notez = notes.find(eq(Note.id, id)).map(mapper);
+		Note res = notez.first();
+		return res;
+	}
+	
 	public List<Note> selectNotesFromUser(User user, boolean isArchive) {
 		MongoIterable<Note> notez = notes.find(and(eq(Note.userId, user.getId()), eq(Note.archive, isArchive)))
 				.map(mapper);
