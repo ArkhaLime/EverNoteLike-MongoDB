@@ -25,10 +25,10 @@ public class UpdateNoteView {
 
 	public UpdateNoteView(Note note, User user) {
 		// Create views swing UI components
-		
+
 		JLabel titleLabel = new JLabel("Titre                   ");
 		JLabel contenuLabel = new JLabel("Contenu                         ");
-		JLabel hashtagLabel = new JLabel("Hashtag                             ");
+		JLabel hashtagLabel = new JLabel("Hashtag (séparé par des espaces)        ");
 		JTextField idField = new JTextField(26);
 		idField.setText(note.getId().toString());
 		JTextField titleField = new JTextField(26);
@@ -41,13 +41,14 @@ public class UpdateNoteView {
 		JButton switchViewButton = new JButton("Retour");
 		switchViewButton.setMaximumSize(new Dimension(80, 60));
 		JFrame frame = new JFrame(note.getTitre());
+		frame.setResizable(false);
 
 		// Create controllers
-		UpdateNoteController UpdateNoteController = new UpdateNoteController(idField ,titleField, contenuField, hashtagField, user, frame);
+		UpdateNoteController UpdateNoteController = new UpdateNoteController(idField, titleField, contenuField,
+				hashtagField, user, frame);
 		updateButton.addActionListener(UpdateNoteController);
 		RetourController retourController = new RetourController(user, frame);
 		switchViewButton.addActionListener(retourController);
-		
 
 		// Set the view layout
 		JPanel ctrlPane = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -61,10 +62,8 @@ public class UpdateNoteView {
 		ctrlPane.add(contenuField, BorderLayout.WEST);
 		ctrlPane.add(hashtagLabel, BorderLayout.WEST);
 		ctrlPane.add(hashtagField, BorderLayout.WEST);
-		
+
 		ctrlPane.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-
-
 
 		JPanel panelButton = new JPanel();
 		panelButton.add(updateButton);
@@ -73,7 +72,7 @@ public class UpdateNoteView {
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		frame.add(splitPane);
+		frame.getContentPane().add(splitPane);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setMaximumSize(dimension);
@@ -84,8 +83,8 @@ public class UpdateNoteView {
 
 	private String getHashtags(Note note) {
 		String hashtags = "";
-		for(String hashtag : note.getHashtags()){
-			hashtags = hashtags+hashtag+" ";
+		for (String hashtag : note.getHashtags()) {
+			hashtags += hashtag + " ";
 		}
 		return hashtags;
 	}
