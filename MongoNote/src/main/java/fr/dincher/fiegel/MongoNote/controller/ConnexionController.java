@@ -38,7 +38,7 @@ public class ConnexionController implements ActionListener {
 				} else {
 					frame.setVisible(false);
 					NoteDao dao2 = new NoteDao();
-					List<Note> notes = dao2.selectAllNotesFromUser(user);
+					List<Note> notes = dao2.selectNotesFromUser(user,false);
 					new ListeNotesView(notes, user);
 				}
 			} catch (Exception e1) {
