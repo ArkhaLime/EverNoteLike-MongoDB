@@ -24,7 +24,7 @@ public class AddNoteView {
 
 	public AddNoteView(User user) {
 		// Create views swing UI components
-		JLabel titleLabel = new JLabel("Titre du spectacle                             ");
+		JLabel titleLabel = new JLabel("Titre                             ");
 		JLabel contenuLabel = new JLabel("Contenu                  ");
 		JLabel hashtagLabel = new JLabel("Hashtag            ");
 		JTextField titleField = new JTextField(26);
