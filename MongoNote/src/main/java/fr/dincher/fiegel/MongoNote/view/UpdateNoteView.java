@@ -36,7 +36,7 @@ public class UpdateNoteView {
 		JTextField contenuField = new JTextField(26);
 		contenuField.setText(note.getContenu());
 		JTextField hashtagField = new JTextField(26);
-		hashtagField.setText(note.getHashtags().toString());
+		hashtagField.setText(getHashtags(note));
 		JButton updateButton = new JButton("Editer");
 		JButton switchViewButton = new JButton("Retour");
 		switchViewButton.setMaximumSize(new Dimension(80, 60));
@@ -80,6 +80,14 @@ public class UpdateNoteView {
 		frame.setPreferredSize(dimension);
 		frame.setMinimumSize(dimension);
 		frame.setVisible(true);
+	}
+
+	private String getHashtags(Note note) {
+		String hashtags = "";
+		for(String hashtag : note.getHashtags()){
+			hashtags = hashtags+hashtag+" ";
+		}
+		return hashtags;
 	}
 
 }
