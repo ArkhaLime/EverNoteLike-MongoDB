@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project MongoNote with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="D:/Michel/Mes documents/Année 2016-2017/Projet MongoDB"/>
+    <property name="dir.jarfile" value="${dir.buildfile}/release"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/MongoNote-1.0.0.jar">
+            <manifest>
+                <attribute name="Main-Class" value="fr.dincher.fiegel.MongoNote.Main"/>
+                <attribute name="Class-Path" value=". MongoNote-1.0.0_lib/mongodb-driver-3.4.2.jar MongoNote-1.0.0_lib/bson-3.4.2.jar MongoNote-1.0.0_lib/mongodb-driver-core-3.4.2.jar"/>
+            </manifest>
+            <fileset dir="${dir.buildfile}/target/classes"/>
+        </jar>
+        <delete dir="${dir.jarfile}/MongoNote-1.0.0_lib"/>
+        <mkdir dir="${dir.jarfile}/MongoNote-1.0.0_lib"/>
+        <copy file="C:/Users/Michel/.m2/repository/org/mongodb/mongodb-driver/3.4.2/mongodb-driver-3.4.2.jar" todir="${dir.jarfile}/MongoNote-1.0.0_lib"/>
+        <copy file="C:/Users/Michel/.m2/repository/org/mongodb/bson/3.4.2/bson-3.4.2.jar" todir="${dir.jarfile}/MongoNote-1.0.0_lib"/>
+        <copy file="C:/Users/Michel/.m2/repository/org/mongodb/mongodb-driver-core/3.4.2/mongodb-driver-core-3.4.2.jar" todir="${dir.jarfile}/MongoNote-1.0.0_lib"/>
+    	<copy file="${dir.buildfile}/config.properties" todir="${dir.jarfile}"/>
+    </target>
+</project>
