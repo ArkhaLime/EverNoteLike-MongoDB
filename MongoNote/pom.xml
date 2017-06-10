@@ -47,7 +47,7 @@
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>${exec.maven.plugin.version}</version>
 					<configuration>
-						<mainClass>fr.dincher.fiegel.MongoNote.App</mainClass>
+						<mainClass>fr.dincher.fiegel.MongoNote.Main</mainClass>
 					</configuration>
 				</plugin>
 			</plugins>
