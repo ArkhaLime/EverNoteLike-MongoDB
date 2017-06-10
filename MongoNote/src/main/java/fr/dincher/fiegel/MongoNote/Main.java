@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		MongoConnection.startConnection();
 		System.out.println("Connexion lancée");
-		ConnexionView vue = new ConnexionView();
+		new ConnexionView();
 		System.out.println("Fenètre lancée");
 		// MongoConnection.closeConnection();
 		// System.out.println("Connexion fermé");

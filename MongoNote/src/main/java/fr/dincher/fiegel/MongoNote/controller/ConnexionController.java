@@ -34,7 +34,7 @@ public class ConnexionController implements ActionListener {
 				UserDao dao = new UserDao();
 				User user = dao.login(loginField.getText(), mdpField.getText());
 				if (user == null) {
-					JOptionPane.showMessageDialog(frame, "Login ou mot de passe �rron�");
+					JOptionPane.showMessageDialog(frame, "Login ou mot de passe érroné");
 				} else {
 					frame.setVisible(false);
 					NoteDao dao2 = new NoteDao();
